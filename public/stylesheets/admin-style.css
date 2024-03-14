@@ -1,0 +1,238 @@
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap");
+
+@font-face {
+  font-family: urdu1;
+  src: url(/fonts/Jameel\ Noori\ Nastaleeq\ Kasheeda.ttf);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: urdu1;
+}
+
+:root {
+  --primary: #2dcc70;
+  --body: #2b3a4f;
+  --grey: #92a1a2;
+  --grey-light: #ecf0f1;
+  --blue: #59a4e8;
+  --orange: #e54239;
+  --purple: #8f40b3;
+  --night-blue: #34495e;
+  --night-blue-dark: #233342;
+}
+
+/* inputs and btn */
+
+.btn {
+  font-size: 22px;
+  margin: auto;
+  background-color: var(--orange);
+  color: var(--black);
+  padding: 5px 30px;
+  border-radius: 10px;
+  margin-top: 10px;
+  cursor: pointer;
+  border: none;
+  padding: 5px 15px;
+  width: 100%;
+  transition: all ease 0.5s;
+}
+
+.btn:hover {
+  color: var(--orange);
+  background: transparent;
+  border: 1px solid var(--orange);
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="number"],
+textarea {
+  width: 100%;
+  border-radius: 10px;
+  padding: 10px;
+  margin-top: 10px;
+  font-size: 18px;
+}
+
+main {
+  display: flex;
+}
+
+aside {
+  width: 25%;
+  border-right: 3px solid var(--grey-light);
+  height: 100vh;
+  overflow: auto;
+  background-color: var(--body);
+}
+
+aside .header {
+  color: var(--orange);
+  text-align: center;
+  font-size: 30px;
+  padding: 20px 10px;
+  font-weight: 500;
+  margin-bottom: 10px;
+  border-bottom: 1px solid var(--grey);
+}
+
+aside .side-navigation ul {
+  list-style: none;
+  width: 100%;
+}
+
+aside .side-navigation li {
+  width: 100%;
+  border-bottom: 1px solid var(--grey);
+  font-size: 22px;
+  padding: 20px;
+}
+
+aside .side-navigation li:hover {
+  background-color: var(--grey);
+}
+
+aside .side-navigation li a {
+  text-decoration: none;
+  color: var(--grey-light);
+}
+
+.container {
+  width: 75%;
+  height: 100vh;
+  overflow: auto;
+}
+
+.container .header {
+  border: 1px solid;
+  padding: 20px;
+  background-color: var(--body);
+}
+
+.category-navigation {
+  list-style: none;
+  display: flex;
+  gap: 50px;
+}
+
+.container .category-navigation li a {
+  text-decoration: none;
+  color: var(--grey-light);
+  font-size: 22px;
+  font-weight: 500;
+}
+
+.container .category-navigation li:hover a {
+  color: var(--blue);
+}
+
+.container .add-poetry {
+  margin-top: 10px;
+  font-size: 20px;
+  color: var(--orange);
+  font-weight: 700;
+}
+
+.poetry-container {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  /* align-items: center; */
+  text-align: center;
+  margin-top: 10px;
+  font-size: 20px;
+}
+
+.poetry-container .p_box {
+  border: 1px solid;
+  width: 50%;
+  padding: 10px 5px;
+  border-radius: 10px;
+  line-height: 1.2;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  letter-spacing: 3px;
+  line-height: 1.2;
+}
+
+.poetry-container .p_box .controls {
+  display: flex;
+  justify-content: space-around;
+  margin: 10px;
+}
+
+/* form */
+
+.form_container input[type="text"] {
+  height: 50px;
+  margin-bottom: 10px;
+}
+
+.back {
+  font-size: 25px;
+  color: var(--orange);
+}
+
+.poet-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-around;
+  margin-top: 20px;
+  gap: 10px;
+}
+
+.poet-container .single-poet {
+  /* border: 1px solid var(--orange); */
+  box-shadow: 1px 1px 10px var(--night-blue);
+  border-radius: 10px;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all ease 0.5s;
+  position: relative;
+}
+
+.poet-container .single-poet:hover {
+  scale: 1.1;
+}
+
+.poet-container .single-poet:hover .poet_btns{
+  opacity: 1;
+  visibility: visible;
+}
+
+.poet_btns {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 40px;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  visibility: hidden;
+  transition: all ease 0.5s;
+}
+
+.poet-container .single-poet img {
+  height: 120px;
+  width: 120px;
+  max-height: 150px;
+  max-width: 150px;
+}
+
+.poet-container p {
+  font-size: 22px;
+}

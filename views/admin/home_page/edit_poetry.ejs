@@ -1,0 +1,61 @@
+<div class="container">
+  <a href="/admin/dashboard/allPoetry" class="back">← Back</a>
+  <div class="form_container">
+    <h2 class="">Edit Poetry</h2>
+    <form action="/admin/poetry/update/<%= poetry._id %>" method="post">
+      <input
+        type="text"
+        name="poetName"
+        placeholder="Poet Name in Urdu"
+        required
+        value="<%= poetry.poetName %>"
+      />
+      <input
+        type="text"
+        name="poetNameKeyword"
+        placeholder="Poet Name in English"
+        required
+        value="<%= poetry.poetNameKeyword %>"
+      />
+      <!-- <select name="category" id="category" required>
+          <option value="" selected>Select A Category</option>
+          <option value="2Line">2 Line</option>
+          <option value="4Line">4 line</option>
+          <option value="nazam" id="nazam_category">Nazam</option>
+          <option value="gazal">Gazal</option>
+        </select> -->
+
+      <input
+        type="text"
+        name="category"
+        placeholder="Enter categories"
+        required
+        value="<%= poetry.category %>"
+      />
+
+      <input
+        type="text"
+        name="nazamTitle"
+        placeholder="Title for Nazam And Gazal"
+        id="nazam_title"
+        value="<%= poetry.nazamTitle %>"
+      />
+
+      <% if (messages.poet) { %>
+      <p class="error" style="color: red; font-size: 20px">
+        <%= messages.poet %>
+      </p>
+      <% } %>
+
+      <textarea name="poetry" id="editor" cols="30" rows="10" required>
+        <%= poetry.poetry %>
+      </textarea>
+      <% if (messages.error) { %>
+      <p class="error" id="error" style="font-size: 22px">
+        <%= messages.error %>
+      </p>
+      <% } %>
+      <input type="submit" value="Update Poetry" class="btn" />
+    </form>
+  </div>
+</div>

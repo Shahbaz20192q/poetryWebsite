@@ -1,0 +1,38 @@
+<nav class="navbar">
+  <div>
+    <a href="/" class="logo">Logo</a>
+  </div>
+
+  <ul class="ul">
+    <li class="nav-links">
+      <a href="/poet/<%= poet.poetName %>">Home</a>
+    </li>
+
+    <li class="nav-links">
+      <a href="/poet/<%= poet.poetName %>/gazal">Gazal</a>
+    </li>
+
+    <li class="nav-links">
+      <a href="/poet/<%= poet.poetName %>/nazam">Nazam</a>
+    </li>
+
+    <li class="nav-links">
+      <a href="/poet/<%= poet.poetName %>/2Line">2 line poetry</a>
+    </li>
+
+    <li class="nav-links">
+      <a href="/poet/<%= poet.poetName %>/4Line">4 line poetry</a>
+    </li>
+  </ul>
+</nav>
+
+<div class="container">
+  <div class="poet_details">
+    <h2 class="poet_name" style="text-transform: capitalize;"><%= poet.poetName %> (<%=category %>s)</h2>
+    <img
+      class="poet_image"
+      src="/images/famous_poet/<%= poet.poetImage %>"
+      alt="<%= poet.poetName %> Image"
+    />
+  </div>
+</div>

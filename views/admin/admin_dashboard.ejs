@@ -1,0 +1,21 @@
+<div class="container">
+  <%- include('./home_page/partials/home_page_header.ejs') %>
+
+  <a href="/admin/daily/upload" class="add-poetry">Add Poetry</a>
+
+  <div class="poetry-container">
+    <% dailyPoetry.reverse().forEach(poetry => { %>
+    <div class="p_box">
+      <%- poetry.poetry %>
+      <span class="poet-name"> <%= poetry.poetName %> </span>
+      <br />
+
+      <div class="controls">
+        <a href="/admin/daily/upload/delete/<%= poetry._id %>"><i class="fa-solid fa-trash"></i></a>
+
+        <a href="/admin/daily/upload/update/<%= poetry._id %>"><i class="fa-sharp fa-solid fa-pen-to-square"></i></a>
+      </div>
+    </div>
+    <% }) %>
+  </div>
+</div>

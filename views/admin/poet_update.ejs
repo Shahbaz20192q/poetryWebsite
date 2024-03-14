@@ -1,0 +1,21 @@
+<div class="container">
+  <a href="/admin/dashboard/famous_poets" class="back">← Back</a>
+
+  <form
+    action="/admin/dashboard/famous_poets/edit/<%= poet._id %>"
+    method="post"
+    enctype="multipart/form-data"
+  >
+    <input type="file" name="poetImage" id="poetImage" />
+    <input
+      type="text"
+      name="poetName"
+      placeholder="Enter Poet Name"
+      value="<%= poet.poetName %>"
+    />
+    <textarea name="poetDiscription" id="editor" cols="30" rows="10">
+<%= poet.poetDiscription %></textarea
+    >
+    <input type="submit" value="Add Poet" class="btn" />
+  </form>
+</div>

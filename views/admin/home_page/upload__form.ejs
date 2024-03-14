@@ -1,0 +1,37 @@
+<div class="container">
+  <a href="/admin/dashboard" class="back">← Back</a>
+  <div class="form_container">
+    <h2 class="">Add Poetry</h2>
+    <form action="/admin/daily/upload" method="post">
+      <input type="text" name="poetName" placeholder="Poet Name" required />
+
+      <% if (messages.poet) { %>
+      <p class="error" style="color: red; font-size: 20px">
+        <%= messages.poet %>
+      </p>
+      <% } %>
+
+      <!-- <input type="text" name="poetry" id="editor" placeholder="Poetry"> -->
+      <textarea
+        name="poetry"
+        id="editor"
+        cols="30"
+        rows="10"
+        required
+      ></textarea>
+      <% if (messages.error) { %>
+      <p class="error" id="error" style="font-size: 22px;"><%= messages.error %></p>
+      <% } %>
+      <input type="submit" value="Add Poetry" class="btn" />
+    </form>
+  </div>
+</div>
+
+<script>
+  const errrorMessage = document.getElementById("error");
+  if (errrorMessage.textContent == "Thank You :), Poetry Published") {
+    errrorMessage.style.color = "green";
+  } else if (errrorMessage.textContent == "please Write Poetry") {
+    errrorMessage.style.color = "red";
+  }
+</script>

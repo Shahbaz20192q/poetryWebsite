@@ -1,0 +1,23 @@
+<script src="/ckeditor/ckeditor.js"></script>
+
+<script>
+  CKEDITOR.replace("editor",{
+    extraPlugins: 'justify, colorbutton',
+  });
+</script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function(event) { 
+      var scrollpos = localStorage.getItem('scrollpos');
+      if (scrollpos) window.scrollTo(0, scrollpos);
+  });
+
+  window.onbeforeunload = function(e) {
+      localStorage.setItem('scrollpos', window.scrollY);
+  };
+</script>
+
+<script src="/javascripts/script.js"></script>
+<footer>
+    <p> Copyright &copy; 2024 Poetry Website </p>
+</footer>

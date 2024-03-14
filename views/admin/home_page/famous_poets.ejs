@@ -1,0 +1,23 @@
+<div class="container">
+  <%- include('../home_page/partials/home_page_header.ejs') %>
+  <a href="/admin/dashboard/famous_poets/add" class="add-poetry">Add Poet</a>
+  <br />
+  <div class="poet-container">
+    <% poets.forEach(poet => { %>
+    <div class="single-poet">
+      <img
+        src="/images/famous_poet/<%= poet.poetImage %>"
+        alt="<%= poet.poetName %> Image"
+      />
+
+      <p><%= poet.poetName %></p>
+      <div class="poet_btns">
+        <a href="/admin/dashboard/famous_poets/delete/<%= poet._id %>"
+          ><i class="fa-solid fa-trash"></i
+        ></a>
+        <a href="/admin/dashboard/famous_poets/edit/<%= poet._id %>"><i class="fa-sharp fa-solid fa-pen-to-square"></i></a>
+      </div>
+    </div>
+    <% }) %>
+  </div>
+</div>

@@ -1,0 +1,63 @@
+<div class="container">
+  <div class="day_poetry_wraper">
+    <div class="poetry-up">
+      <h3 class="h3-heading">Added By Public</h3>
+      <h3 class="h3-heading">
+        <a href="/write/upload" class="poet-name">+ Add Poetry</a>
+      </h3>
+    </div>
+    <div class="dayPoetry">
+      <% poetry.reverse().forEach(elem => { %>
+      <div class="p_box">
+        <h4 class="poet-name" style="text-align: left">
+          @<%= elem.userName %>
+        </h4>
+        <%- elem.poetry %>
+        <span class="poet-name"><%= elem.poetName %></span>
+        <br />
+        <div class="icons-box">
+          <div>
+            <form
+              action="/write/like/<%= elem._id %>"
+              method="post"
+              class="icon"
+            >
+              <button
+                type="submit"
+                style="
+                  background: transparent;
+                  outline: none;
+                  border: none;
+                  font-size: 27px;
+                  color: red;
+                  cursor: pointer;
+                "
+              >
+                <% if (elem.likes.indexOf(user._id) !== -1) { %>
+                <i class="bi bi-balloon-heart-fill"></i>
+                <% } else{ %>
+                <i class="bi bi-balloon-heart"></i>
+                <% } %>
+              </button>
+              <p><%= elem.likes.length %></p>
+            </form>
+          </div>
+          <div class="icon">
+            <i
+              class="bi bi-share"
+              onclick="shareContent(`<%- elem.poetry %>`)"
+            ></i>
+          </div>
+          <div class="icon">
+            <a href="/write/comment/<%= elem._id %>"
+              ><i class="bi bi-chat-left-text"></i
+            ></a>
+            <p><%= elem.comments.length %></p>
+          </div>
+        </div>
+      </div>
+      <% }) %>
+      <a href="" class="btn">Load More...</a>
+    </div>
+  </div>
+</div>

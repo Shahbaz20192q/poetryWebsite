@@ -1,0 +1,54 @@
+<div class="container">
+  <div class="dayPoetry">
+    <% poetry.forEach(poetry => { %>
+      <div class="p_box" onclick="location='/single_poetry/<%=poetry._id%>'" style="cursor: pointer;">
+        <% if ( poetry.nazamTitle ) { %>
+        <h2><%= poetry.nazamTitle %></h2>
+        <% } else { %> <%- poetry.poetry %> <% } %>
+
+        <span class="poet-name"><%= poetry.poetName %></span>
+        <br />
+        <div class="icons-box">
+          <div class="icon">
+            <form
+              action="/poetry/like/<%= poetry._id %>"
+              method="post"
+              class="icon"
+            >
+              <button
+                type="submit"
+                style="
+                  background: transparent;
+                  outline: none;
+                  border: none;
+                  font-size: 27px;
+                  color: red;
+                  cursor: pointer;
+                "
+              >
+                <% if (poetry.likes.indexOf(user._id) !== -1) { %>
+                <i class="bi bi-balloon-heart-fill"></i>
+                <% } else{ %>
+                <i class="bi bi-balloon-heart"></i>
+                <% } %>
+              </button>
+              <p><%= poetry.likes.length %></p>
+            </form>
+          </div>
+          <div class="icon">
+            <i
+              class="bi bi-share"
+              onclick="shareContent(`<%=poetry.poetry%>`)"
+            ></i>
+          </div>
+          <div class="icon">
+            <a href="/poetry/comment/<%= poetry._id %>"
+              ><i class="bi bi-chat-left-text"></i
+            ></a>
+            <p><%= poetry.comments.length %></p>
+          </div>
+        </div>
+      </div>
+    <% }) %>
+  </div>
+</div>

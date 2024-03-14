@@ -1,0 +1,47 @@
+<div class="container">
+  <h3 class="h3-heading">Sign in User</h3>
+  <form action="/users/login" method="post">
+    <input
+      type="text"
+      name="username"
+      placeholder="Enter Username..."
+      required
+    />
+    <input
+      type="password"
+      name="password"
+      placeholder="Enter password"
+      required
+    />
+    <% if (messages.error) { %>
+    <p class="error" style="color: red; font-size: 20px">
+      <%= messages.error %>
+    </p>
+    <% } %>
+    <input type="submit" value="Login" class="btn" />
+  </form>
+
+  <h3 class="h3-heading">Register</h3>
+  <form action="/users/register" method="post">
+    <input
+      type="text"
+      name="username"
+      placeholder="Enter Username..."
+      required
+    />
+    <input type="email" name="email" placeholder="Enter Email..." required />
+    <input
+      type="password"
+      name="password"
+      placeholder="Enter password"
+      required
+    />
+    <% if (messages.rerror) { %>
+    <p class="error" style="color: red; font-size: 20px">
+      <%= messages.rerror %>
+    </p>
+    <% } %>
+    <input type="submit" value="Register" class="btn" />
+  </form>
+</div>
+

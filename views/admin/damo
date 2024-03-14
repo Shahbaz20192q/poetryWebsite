@@ -1,0 +1,22 @@
+<div class="container user">
+  <div class="action-links">
+    <ul>
+      <li>
+        <a href="#" data-title="Edit profile"><i class="fa fa-pencil"></i></a>
+      </li>
+      <li>
+        <a href="#" data-title="Sign out"><i class="fa fa-sign-out"></i></a>
+      </li>
+    </ul>
+  </div>
+</div>
+<!-- main content-->
+<div class="wrapper">
+  <ul class="category-navigation">
+    <li class="active"><a href="#">Home</a></li>
+    <li><a href="#">Admins</a></li>
+    <li><a href="#">Knowledge board</a></li>
+    <li><a href="#">Forum</a></li>
+  </ul>
+  
+</div>

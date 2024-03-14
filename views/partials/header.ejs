@@ -1,0 +1,56 @@
+<nav class="navbar">
+  <div>
+    <a href="/" class="logo">Logo</a>
+  </div>
+
+  <ul class="ul">
+    <li class="nav-links">
+      <a href="/">Home</a>
+    </li>
+
+    <li class="nav-links">
+      <a href="/write">Write</a>
+    </li>
+
+    <li class="nav-links">
+      <a href="/all/gazal">Gazal</a>
+    </li>
+
+    <li class="nav-links">
+      <a href="/all/nazam">Nazam</a>
+    </li>
+
+    <li class="nav-links">
+      <a href="/all/2Line">2 line poetry</a>
+    </li>
+
+    <li class="nav-links">
+      <a href="/all/4Line">4 line poetry</a>
+    </li>
+
+    <li class="nav-links" onmouseover="setPoetsHeight()" onmouseout="removePoetsHeight()">
+      Poets
+      <span class="mark__sisg">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          fill="currentColor"
+          class="bi bi-caret-down-fill"
+          viewBox="0 0 16 16"
+        >
+          <path
+            d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"
+          />
+        </svg>
+      </span>
+      <ul id="sub-link">
+        <% poets.forEach(poet => { %>
+        <li>
+          <a href="/poet/<%= poet.poetName %>"><%= poet.poetName %></a>
+        </li>
+        <% }) %>
+      </ul>
+    </li>
+  </ul>
+</nav>
