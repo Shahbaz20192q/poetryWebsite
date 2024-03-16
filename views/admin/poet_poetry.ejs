@@ -3,7 +3,7 @@
     <% poetry.forEach(poetry => { %>
       <div class="p_box" onclick="location='/single_poetry/<%=poetry._id%>'" style="cursor: pointer;">
         <% if ( poetry.nazamTitle ) { %>
-        <h2><%= poetry.nazamTitle %></h2>
+        <h3><%= poetry.nazamTitle %></h3>
         <% } else { %> <%- poetry.poetry %> <% } %>
 
         <span class="poet-name"><%= poetry.poetName %></span>

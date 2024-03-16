@@ -1,3 +1,17 @@
+const closeBtn = document.getElementById("close-btn");
+const navBare = document.getElementById("navBare");
+const ul = document.getElementById("ul");
+
+
+navBare.addEventListener("click", function () {
+    ul.classList.toggle("active");
+});
+
+closeBtn.addEventListener("click", function () {
+    ul.classList.toggle("active");
+});
+
+
 function stripHtmlTags(html) {
     // Create a temporary div element
     var tempDiv = document.createElement('div');

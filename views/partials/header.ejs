@@ -3,7 +3,10 @@
     <a href="/" class="logo">Logo</a>
   </div>
 
-  <ul class="ul">
+  <div class="navBare" id="navBare"><i class="bi bi-list"></i></div>
+
+  <ul class="ul" id="ul">
+    <i class="bi bi-x-lg" id="close-btn"></i>
     <li class="nav-links">
       <a href="/">Home</a>
     </li>
@@ -28,7 +31,11 @@
       <a href="/all/4Line">4 line poetry</a>
     </li>
 
-    <li class="nav-links" onmouseover="setPoetsHeight()" onmouseout="removePoetsHeight()">
+    <li
+      class="nav-links"
+      onmouseover="setPoetsHeight()"
+      onmouseout="removePoetsHeight()"
+    >
       Poets
       <span class="mark__sisg">
         <svg
