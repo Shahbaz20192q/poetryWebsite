@@ -11,6 +11,7 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const flash = require('express-flash');
+const { isActiveRoute } = require('./server/routerHelper/helper')
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -25,6 +26,8 @@ app.use(expressLayouts);
 app.set('layout', './layouts/main');
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
+
+app.locals.isActiveRoute = isActiveRoute;
 
 app.use(expressSession({
   resave: false,

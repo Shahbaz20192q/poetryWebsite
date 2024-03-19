@@ -14,14 +14,14 @@ const multer = require('multer');
 //   res.render('admin/admin_dashboard', { title: 'Admin Dashboard', layout: adminLayout });
 // });
 
-router.get('/dashboard', async function (req, res) {
+router.get('/dashboard', isAdmin, async function (req, res) {
   const dailyPoetry = await dailyPoetryModel.find();
 
   res.render('admin/admin_dashboard', { title: 'Admin Dashboard', dailyPoetry, layout: adminLayout });
 });
 
 
-router.get('/daily/upload', function (req, res) {
+router.get('/daily/upload',isAdmin, function (req, res) {
 
   res.render('admin/home_page/upload__form', { title: 'Add Daily Poetry', layout: adminLayout });
 });
@@ -46,12 +46,12 @@ router.post('/daily/upload', function (req, res) {
   res.redirect("/admin/daily/upload");
 });
 
-router.get('/daily/upload/delete/:id', async function (req, res) {
+router.get('/daily/upload/delete/:id',isAdmin, async function (req, res) {
   const dailyPoetry = await dailyPoetryModel.findOneAndDelete({ _id: req.params.id })
   res.redirect('/admin/dashboard')
 });
 
-router.get('/daily/upload/update/:id', async function (req, res) {
+router.get('/daily/upload/update/:id',isAdmin, async function (req, res) {
   const dailyPoetry = await dailyPoetryModel.findOne({ _id: req.params.id })
   res.render('admin/home_page/dailyPoetry_update', { dailyPoetry, title: "update daily poetry", layout: adminLayout })
 });
@@ -82,12 +82,12 @@ router.post('/daily/upload/update/:id', async function (req, res) {
 });
 
 
-router.get('/dashboard/famous_poets', async function (req, res) {
+router.get('/dashboard/famous_poets',isAdmin, async function (req, res) {
   const poets = await famousPoetModel.find();
   res.render('admin/home_page/famous_poets', { title: "add poet", poets, layout: adminLayout })
 });
 
-router.get('/dashboard/famous_poets/add', function (req, res) {
+router.get('/dashboard/famous_poets/add',isAdmin, function (req, res) {
 
   res.render('admin/home_page/add_poet', { title: "add poet", layout: adminLayout })
 });
@@ -103,22 +103,22 @@ router.post('/dashboard/famous_poets/add', famousPoetsMulter.single('poetImage')
   res.render('admin/home_page/add_poet', { title: "add poet", layout: adminLayout })
 });
 
-router.get('/dashboard/allPoetry', async function (req, res) {
+router.get('/dashboard/allPoetry',isAdmin, async function (req, res) {
   const poetry = await allPoetryModel.find()
   res.render("admin/all_poetry", { layout: adminLayout, poetry })
 });
 
-router.get('/dashboard/upload/poetry', async function (req, res) {
+router.get('/dashboard/upload/poetry',isAdmin, async function (req, res) {
   const locals = { title: "Add Poetry" }
   res.render("admin/all_poetry_form", { layout: adminLayout, title: locals.title })
 });
 
-router.get('/poetry/delete/:id', async function (req, res) {
+router.get('/poetry/delete/:id',isAdmin, async function (req, res) {
   await allPoetryModel.findOneAndDelete({ _id: req.params.id });
   res.redirect('/admin/dashboard/allPoetry')
 });
 
-router.get('/poetry/update/:id', async function (req, res) {
+router.get('/poetry/update/:id',isAdmin, async function (req, res) {
   const poetry = await allPoetryModel.findOne({ _id: req.params.id });
   res.render('admin/home_page/edit_poetry', { poetry, layout: adminLayout })
 });
@@ -188,14 +188,14 @@ router.post('/dashboard/upload/poetry', async function (req, res) {
 
 // Delete Poet
 
-router.get('/dashboard/famous_poets/delete/:id', async function (req, res) {
+router.get('/dashboard/famous_poets/delete/:id',isAdmin, async function (req, res) {
   const id = req.params.id
   const poet = await famousPoetModel.findOneAndDelete({ _id: id });
 
   res.redirect('/admin/dashboard/famous_poets')
 });
 
-router.get('/dashboard/famous_poets/edit/:id', async function (req, res) {
+router.get('/dashboard/famous_poets/edit/:id',isAdmin, async function (req, res) {
   const id = req.params.id
   const poet = await famousPoetModel.findOne({ _id: id });
 
@@ -225,4 +225,11 @@ router.post('/dashboard/famous_poets/edit/:id', famousPoetsMulter.single('poetIm
   res.redirect('/admin/dashboard/famous_poets');
 });
 
+
+function isAdmin(req, res, next) {
+  if (req.isAuthenticated() && req.user.isAdmin) {
+    return next();
+  }
+  res.redirect('/');
+}
 module.exports = router;

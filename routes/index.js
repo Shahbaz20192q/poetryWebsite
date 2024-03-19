@@ -18,7 +18,7 @@ router.get('/', isLoggedIn, async function (req, res) {
   const poets = await famousPoetModel.find();
   const user = await userModel.findOne({ username: req.session.passport.user })
   const dailyPoetry = await dailyPoetryModel.find();
-  res.render('index', { title: 'Poetry website', user, dailyPoetry, poets, layout: mainLayout });
+  res.render('index', { title: 'Poetry website', user, dailyPoetry, poets, currentRoute: '/', layout: mainLayout });
 });
 
 router.get('/daily/like/:id', isLoggedIn, async function (req, res, next) {
@@ -45,7 +45,7 @@ router.get('/daily/like/:id', isLoggedIn, async function (req, res, next) {
 router.get('/daily/comment/:id', isLoggedIn, async function (req, res, next) {
   const poets = await famousPoetModel.find();
   const poetry = await dailyPoetryModel.findOne({ _id: req.params.id }).populate('comments');
-  res.render('user/comments/daily_comments', { title: 'Comment', poets, layout: mainLayout, poetry });
+  res.render('user/comments/daily_comments', { title: 'Comment', poets, currentRoute: `/daily/comment/${req.params.id}`, layout: mainLayout, poetry });
 });
 
 router.post('/daily/comment/:id', isLoggedIn, async function (req, res, next) {
@@ -73,7 +73,7 @@ router.get('/poet/:poetName', isLoggedIn, async function (req, res, next) {
   const user = await userModel.findOne({ username: req.session.passport.user });
   const category = req.params.category;
 
-  res.render('admin/poet', { poets, poet, user, category, layout: poetsLayout })
+  res.render('admin/poet', { poets, poet, user,currentRoute:`/poet/${req.params.poetName}`, category, layout: poetsLayout })
 });
 
 router.get('/poet/:poetName/:category', isLoggedIn, async function (req, res, next) {
@@ -84,7 +84,7 @@ router.get('/poet/:poetName/:category', isLoggedIn, async function (req, res, ne
   const user = await userModel.findOne({ username: req.session.passport.user });
   const poetry = await poetryModel.find({ poetNameKeyword: req.params.poetName, category: { $regex: new RegExp(searchNoSpeacialChar, 'i') } });
 
-  res.render('admin/poet_poetry', { poets, poet, poetry, user, category, layout: poetsLayout })
+  res.render('admin/poet_poetry', { poets, poet, poetry, currentRoute: `/poet/${req.params.poetName}/${req.params.category}`, user, category, layout: poetsLayout })
 });
 
 
@@ -92,7 +92,7 @@ router.get('/write', isLoggedIn, async function (req, res, next) {
   const poets = await famousPoetModel.find();
   const user = await userModel.findOne({ username: req.session.passport.user });
   const poetry = await writePoetryModel.find();
-  res.render('write', { title: 'Poetry by Poeples', poets, user, layout: mainLayout, poetry });
+  res.render('write', { title: 'Poetry by Poeples', poets, currentRoute: '/write', user, layout: mainLayout, poetry });
 });
 
 router.post('/write/like/:id', isLoggedIn, async function (req, res, next) {
@@ -117,13 +117,13 @@ router.post('/write/like/:id', isLoggedIn, async function (req, res, next) {
 
 router.get('/write/upload', isLoggedIn, async function (req, res, next) {
   const poets = await famousPoetModel.find();
-  res.render('upload__form', { title: 'Add Poetry', poets, layout: mainLayout });
+  res.render('upload__form', { title: 'Add Poetry', poets, currentRoute: '/write/upload', layout: mainLayout });
 });
 
 router.get('/write/comment/:id', isLoggedIn, async function (req, res, next) {
   const poets = await famousPoetModel.find();
   const poetry = await writePoetryModel.findOne({ _id: req.params.id }).populate('comments');
-  res.render('user/comments/write_comments', { title: 'Comment', poets, layout: mainLayout, poetry });
+  res.render('user/comments/write_comments', { title: 'Comment', poets, currentRoute: `/write/comment/${req.params.id}`, layout: mainLayout, poetry });
 });
 
 router.post('/write/comment/:id', isLoggedIn, async function (req, res, next) {
@@ -173,7 +173,7 @@ router.get('/all/:category', isLoggedIn, async function (req, res, next) {
   const user = await userModel.findOne({ username: req.session.passport.user });
   const poetry = await poetryModel.find({ category: { $regex: new RegExp(searchNoSpeacialChar, 'i') } });
 
-  res.render('user/poetry', { poets, poet, category, poetry, user, layout: mainLayout })
+  res.render('user/poetry', { poets, poet, category, poetry, currentRoute: `/all/${req.params.category}`, user, layout: mainLayout })
 });
 
 router.get('/single_poetry/:id', isLoggedIn, async function (req, res, next) {
@@ -183,13 +183,13 @@ router.get('/single_poetry/:id', isLoggedIn, async function (req, res, next) {
   const user = await userModel.findOne({ username: req.session.passport.user });
   const poetry = await poetryModel.findOne({ _id: id });
 
-  res.render('user/single_poetry', { poets, poet, poetry, user, layout: mainLayout, title: poetry.nazamTitle })
+  res.render('user/single_poetry', { poets, poet, poetry, user, currentRoute: `/single_poetry/${id}`, layout: mainLayout, title: poetry.nazamTitle })
 });
 
 router.get('/poetry/comment/:id', isLoggedIn, async function (req, res, next) {
   const poets = await famousPoetModel.find();
   const poetry = await poetryModel.findOne({ _id: req.params.id }).populate('comments');
-  res.render('user/comments/comments', { title: 'Comment', poets, layout: mainLayout, poetry });
+  res.render('user/comments/comments', { title: 'Comment', poets, currentRoute: `/poetry/comment/${req.params.id}`, layout: mainLayout, poetry });
 });
 
 router.post('/poetry/comment/:id', isLoggedIn, async function (req, res, next) {

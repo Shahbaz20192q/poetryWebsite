@@ -8,30 +8,50 @@
   <ul class="ul" id="ul">
     <i class="bi bi-x-lg" id="close-btn"></i>
     <li class="nav-links">
-      <a href="/poet/<%= poet.poetName %>">Home</a>
+      <a
+        href="/poet/<%= poet.poetName %>"
+        class="<%= isActiveRoute(`/poet/${poet.poetName}`, currentRoute) %>"
+        >Profile</a
+      >
     </li>
 
     <li class="nav-links">
-      <a href="/poet/<%= poet.poetName %>/gazal">Gazal</a>
+      <a
+        href="/poet/<%= poet.poetName %>/gazal"
+        class="<%= isActiveRoute(`/poet/${poet.poetName}/gazal`, currentRoute) %>"
+        >Gazal</a
+      >
     </li>
 
     <li class="nav-links">
-      <a href="/poet/<%= poet.poetName %>/nazam">Nazam</a>
+      <a
+        href="/poet/<%= poet.poetName %>/nazam"
+        class="<%= isActiveRoute(`/poet/${poet.poetName}/nazam`, currentRoute) %>"
+        >Nazam</a
+      >
     </li>
 
     <li class="nav-links">
-      <a href="/poet/<%= poet.poetName %>/2Line">2 line poetry</a>
+      <a
+        href="/poet/<%= poet.poetName %>/2Line"
+        class="<%= isActiveRoute(`/poet/${poet.poetName}/2Line`, currentRoute) %>"
+        >2 line poetry</a
+      >
     </li>
 
     <li class="nav-links">
-      <a href="/poet/<%= poet.poetName %>/4Line">4 line poetry</a>
+      <a href="/poet/<%= poet.poetName %>/4Line"
+        class="<%= isActiveRoute(`/poet/${poet.poetName}/4Line`, currentRoute) %>"
+        >4 line poetry</a>
     </li>
   </ul>
 </nav>
 
 <div class="container">
   <div class="poet_details">
-    <h2 class="poet_name" style="text-transform: capitalize;"><%= poet.poetName %> (<%=category %>s)</h2>
+    <h2 class="poet_name" style="text-transform: capitalize">
+      <%= poet.poetName %> (<%=category %>s)
+    </h2>
     <img
       class="poet_image"
       src="/images/famous_poet/<%= poet.poetImage %>"

@@ -8,27 +8,27 @@
   <ul class="ul" id="ul">
     <i class="bi bi-x-lg" id="close-btn"></i>
     <li class="nav-links">
-      <a href="/">Home</a>
+      <a href="/" class="<%= isActiveRoute('/', currentRoute) %>">Home</a>
     </li>
 
     <li class="nav-links">
-      <a href="/write">Write</a>
+      <a href="/write" class="<%= isActiveRoute('/write', currentRoute) %>">Write</a>
     </li>
 
     <li class="nav-links">
-      <a href="/all/gazal">Gazal</a>
+      <a href="/all/gazal" class="<%= isActiveRoute('/all/gazal', currentRoute) %>">Gazal</a>
     </li>
 
     <li class="nav-links">
-      <a href="/all/nazam">Nazam</a>
+      <a href="/all/nazam" class="<%= isActiveRoute('/all/nazam', currentRoute) %>">Nazam</a>
     </li>
 
     <li class="nav-links">
-      <a href="/all/2Line">2 line poetry</a>
+      <a href="/all/2Line" class="<%= isActiveRoute('/all/2Line', currentRoute) %>">2 line poetry</a>
     </li>
 
     <li class="nav-links">
-      <a href="/all/4Line">4 line poetry</a>
+      <a href="/all/4Line" class="<%= isActiveRoute('/all/4Line', currentRoute) %>">4 line poetry</a>
     </li>
 
     <li

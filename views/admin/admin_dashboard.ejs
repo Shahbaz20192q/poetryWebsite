@@ -1,7 +1,7 @@
-<div class="container">
+<div class="container" id="container">
   <%- include('./home_page/partials/home_page_header.ejs') %>
 
-  <a href="/admin/daily/upload" class="add-poetry">Add Poetry</a>
+  <a href="/admin/daily/upload" class="add-poetry" id="add-poetry">Add Poetry</a>
 
   <div class="poetry-container">
     <% dailyPoetry.reverse().forEach(poetry => { %>

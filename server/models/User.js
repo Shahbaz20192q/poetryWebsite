@@ -15,6 +15,10 @@ const userSchema = mongoose.Schema({
         required: true,
         unique: true
     },
+    isAdmin: {
+        type: Boolean,
+        default: false
+    },
     liked: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Write' }],
     comments: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Comments' }],
 });

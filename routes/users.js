@@ -10,7 +10,7 @@ passport.use(new LocalStrategy(userSchema.authenticate()));
 router.get('/register', async function (req, res, next) {
   const poets = await famousPoetModel.find();
 
-  res.render('user/form', { title: "Register", poets })
+  res.render('user/form', { title: "Register", poets,currentRoute: '/users/register' })
 })
 
 /* Post users listing. */

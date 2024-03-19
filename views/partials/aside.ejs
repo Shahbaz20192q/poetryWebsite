@@ -1,6 +1,8 @@
-<aside>
+<div class="navBare" id="ASnavBare"><i class="bi bi-list"></i></div>
+<aside id="aside">
+  <i class="bi bi-x-lg" id="ASclose-btn"></i>
   <header class="header">
-    <p>Muhammad Shahbaz</p>
+    <p id="admin-name">Muhammad Shahbaz</p>
   </header>
   <nav class="side-navigation">
     <ul>
@@ -22,3 +24,20 @@
     </ul>
   </nav>
 </aside>
+
+
+<script>
+  const ASnavBare = document.getElementById('ASnavBare')
+  const aside = document.getElementById('aside')
+  const AScloseBtn = document.getElementById('ASclose-btn')
+  // const container = document.getElementById('container')
+
+  ASnavBare.addEventListener('click', function(){
+    aside.style.left = '0%'
+  })
+
+  AScloseBtn.addEventListener('click', function(){
+    aside.style.left = '-100%'
+  })
+
+</script>

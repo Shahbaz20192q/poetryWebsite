@@ -200,18 +200,15 @@ textarea {
   color: var(--gray);
 }
 
-.navbar .ul li ul li:hover,
+/* .navbar .ul li ul li:hover,
 .navbar .ul li:hover {
   border: 1px solid;
   padding: 10px;
   border-radius: 10px;
-}
+} */
 
 .active {
   color: var(--gray);
-  border: 1px solid;
-  padding: 10px;
-  border-radius: 10px;
 }
 
 #sub-link li {

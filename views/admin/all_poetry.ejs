@@ -2,19 +2,25 @@
   <%- include('./home_page/partials/allPoetry') %>
 
   <a href="/admin/dashboard/upload/poetry" class="add-poetry">Add Poetry</a>
-  
+
   <div class="poetry-container">
     <% poetry.reverse().forEach(poetry => { %>
     <div class="p_box">
-      <h2><%- poetry.nazamTitle %></h2>
-      <%- poetry.poetry %>
+      <% if (poetry.nazamTitle) { %>
+      <h4><%- poetry.nazamTitle %></h4>
+      <% } else { %> <%- poetry.poetry %> <% } %>
+
       <span class="poet-name"> <%= poetry.poetName %> </span>
       <br />
 
       <div class="controls">
-        <a href="/admin/poetry/delete/<%= poetry._id %>"><i class="fa-solid fa-trash"></i></a>
+        <a href="/admin/poetry/delete/<%= poetry._id %>"
+          ><i class="fa-solid fa-trash"></i
+        ></a>
 
-        <a href="/admin/poetry/update/<%= poetry._id %>"><i class="fa-sharp fa-solid fa-pen-to-square"></i></a>
+        <a href="/admin/poetry/update/<%= poetry._id %>"
+          ><i class="fa-sharp fa-solid fa-pen-to-square"></i
+        ></a>
       </div>
     </div>
     <% }) %>
