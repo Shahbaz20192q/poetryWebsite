@@ -2,6 +2,7 @@
 const passport = require('passport');
 // const Admin = require('./server/models/Admin');
 const User = require('./server/models/User');
+const http = require('http');
 const expressSession = require('express-session');
 const expressLayouts = require('express-ejs-layouts');
 const connectDB = require('./server/config/db');
@@ -69,6 +70,15 @@ app.use(function (err, req, res, next) {
   res.locals.error = req.app.get('env') === 'development' ? err : {};
   res.status(err.status || 500);
   res.render('error');
+});
+
+const hostname = '127.0.0.1';
+const port = 8080;
+
+const server = http.createServer(app);
+
+server.listen(port, hostname, () => {
+  console.log(`Server running at http://${hostname}:${port}/`);
 });
 
 module.exports = app;
